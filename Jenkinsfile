@@ -4,24 +4,20 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                script {
-                    // Compile the .cpp file using a shell script
-                    echo "g++ -o output_file hello.cpp"
-                }
+                // Compile the .cpp file using shell script
+                sh 'g++ -o a hello.cpp'
             }
         }
         stage('Test') {
             steps {
-                script {
-                    // Print the output of the .cpp file using a shell script
-                    echo "./output_file"
-                }
+                // Print output of .cpp file using shell script
+                sh './a'
             }
         }
         stage('Deploy') {
             steps {
-                // Deploy the application (add deployment steps here)
-                // For example, deploy to a server, container, etc.
+                // Add deployment steps here (if any)
+                echo 'Deployment steps...'
             }
         }
     }
@@ -30,9 +26,6 @@ pipeline {
         always {
             // Display "pipeline failed" in case of any errors within the pipeline
             catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
-                echo "Pipeline passed successfully!"
-            }
-            catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 echo "Pipeline failed!"
             }
         }
