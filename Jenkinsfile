@@ -11,7 +11,7 @@ pipeline {
         stage('Test') {
             steps {
                 // Print output of .cpp file using shell script
-                sh './a'
+                sh './non_existing_script.sh'
             }
         }
         stage('Deploy') {
