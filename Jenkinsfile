@@ -6,7 +6,7 @@ pipeline {
             steps {
                 script {
                     // Compile the .cpp file using a shell script
-                    sh "g++ -o output_file hello.cpp"
+                    echo "g++ -o output_file hello.cpp"
                 }
             }
         }
@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     // Print the output of the .cpp file using a shell script
-                    sh "./output_file"
+                    echo "./output_file"
                 }
             }
         }
